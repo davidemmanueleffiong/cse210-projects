@@ -10,5 +10,14 @@ public class Entry
     {
         Console.WriteLine($"{_date} - {_promptText}");
         Console.WriteLine(_entryText);
+
+        // Enhancement: Each displayed journal entry includes a word count.
+
+        int wordCount = _entryText.Split(
+            ' ',
+                StringSplitOptions.RemoveEmptyEntries
+        ).Length;
+
+        Console.WriteLine($"Word count: {wordCount}");
     }
 }
