@@ -1,46 +1,49 @@
+
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
-
-    {   
-        
+    {
         Console.WriteLine("Enter a list of numbers, type 0 when finished.");
-        Console.Write("Enter number: ");
-        string userInput = Console.ReadLine();
-        int number = int.Parse(userInput);
-        
 
         List<int> numbers = new List<int>();
 
-        while  (number != 0)
+        int number = -1;
 
+        while (number != 0)
         {
             Console.Write("Enter number: ");
-            userInput = Console.ReadLine();
+            string userInput = Console.ReadLine();
             number = int.Parse(userInput);
-            numbers.Add(number);
-
 
             if (number != 0)
             {
                 numbers.Add(number);
             }
         }
+
+        if (numbers.Count > 0)
+        {
+            // Calculate the sum
             int sum = 0;
+
             foreach (int num in numbers)
             {
-                Console.WriteLine(num);
                 sum += num;
             }
 
-            Console.WriteLine("The sum of the numbers is: " + sum);
+            Console.WriteLine("The sum is: " + sum);
 
+            // Calculate the average
             double average = (double)sum / numbers.Count;
-            Console.WriteLine($"The average of the numbers is: {average:F2}");
 
+            Console.WriteLine("The average is: " + average);
+
+            // Find the largest number
             int largest = numbers[0];
+
             foreach (int num in numbers)
             {
                 if (num > largest)
@@ -48,28 +51,44 @@ class Program
                     largest = num;
                 }
             }
+
             Console.WriteLine("The largest number is: " + largest);
 
+            // Find the smallest positive number
             int smallestPositive = int.MaxValue;
+            bool foundPositive = false;
 
             foreach (int num in numbers)
             {
                 if (num > 0 && num < smallestPositive)
                 {
                     smallestPositive = num;
+                    foundPositive = true;
                 }
-
             }
 
-            Console.WriteLine("The smallest positive number is: " + smallestPositive);
+            if (foundPositive)
+            {
+                Console.WriteLine("The smallest positive number is: " + smallestPositive);
+            }
+            else
+            {
+                Console.WriteLine("No positive number was entered.");
+            }
+
+            // Sort the list
             numbers.Sort();
-            Console.WriteLine("The sorted list of numbers is: ");
+
+            Console.WriteLine("The sorted list is:");
 
             foreach (int num in numbers)
             {
                 Console.WriteLine(num);
             }
-
-
+        }
+        else
+        {
+            Console.WriteLine("No numbers were entered.");
+        }
     }
 }

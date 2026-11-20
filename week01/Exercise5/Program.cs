@@ -3,39 +3,52 @@ using System;
 class Program
 {
     static void Main(string[] args)
+    {
+        DisplayWelcome();
 
-    {   static void DisplayMessage()
-        {
-            Console.WriteLine("Welcome to the program!");
-        }
-        DisplayMessage();
+        string name = PromptUserName();
 
-        static void PromptUserName()
-        {
-            Console.Write("What is your name? ");
-            string name = Console.ReadLine();
-            Console.WriteLine($"Hello, {name}!");
-        }
-        PromptUserName();
+        int number = PromptUserNumber();
 
-        static void SquareNumber()
-        {
-            Console.Write("Enter a number: ");
-            string input = Console.ReadLine();
-            int number = int.Parse(input);
-            int square = number * number;
-            Console.WriteLine($"The square of {number} is {square}.");
-        }
-        SquareNumber();
+        int square = SquareNumber(number);
 
-        static void DisplayResult()
-        {
-            Console.WriteLine("Thank you for using the program. Goodbye!");
-        }
-        DisplayResult();
+        DisplayResult(name, square);
+
     }
 
+    static void DisplayWelcome()
+
+    {
+        Console.WriteLine("Welcome to the program!");
+    }
+
+    static string PromptUserName()
+    {
+        Console.Write("Please enter your name: ");
+        string name = Console.ReadLine();
+        return name;
+    }
+
+    static int PromptUserNumber()
+    {
+        Console.Write("Please enter your favorite number: ");
+        string input = Console.ReadLine();
+
+        int number = int.Parse(input);
+        return number;
+   }
+
+    static int SquareNumber(int number)
+    {
+        int square = number * number;
+        return square;
+    }
+
+    static void DisplayResult(string name, int square)
+    {
+            
+        Console.WriteLine($"{name}, the square of your number is {square}.");
+    }
 }
-        
-    
+         
 

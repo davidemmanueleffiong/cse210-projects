@@ -2,6 +2,8 @@ using System;
 
 class Program
 {
+// Enhancement: Each displayed journal 
+// entry includes a word count.
     static void Main(string[] args)
     {
         Journal journal = new Journal();
